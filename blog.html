@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Konnect Africa's Blog - Insights, News, and Updates from across Africa">
+    <title>Blog - Konnect Africa</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="Konnect-Africa logo">
+        </a>
+        <nav class="navbar">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="About.html">About</a></li>
+                <li class="nav-item"><a href="services.html">Services</a></li>
+                <li class="nav-item"><a href="Why.html">Why Us</a></li>
+                <li class="nav-item"><a href="team.html">Team</a></li>
+                <li class="nav-item"><a href="blog.html" class="active">Blog</a></li>
+                <li class="nav-item"><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="blog-page">
+        <section class="blog-hero">
+            <div class="container">
+                <h1>Our Blog</h1>
+                <p>Insights, Stories, and Updates from Konnect Africa</p>
+            </div>
+        </section>
+
+        <section class="blog-content">
+            <div class="container">
+                <div class="blog-grid">
+                    <div class="blog-filters">
+                        <h2>Categories</h2>
+                        <ul class="category-list">
+                            <li><a href="#" data-category="all" class="active">All Posts</a></li>
+                            <li><a href="#" data-category="sustainability">Sustainability</a></li>
+                            <li><a href="#" data-category="development">Development</a></li>
+                            <li><a href="#" data-category="technology">Technology</a></li>
+                            <li><a href="#" data-category="education">Education</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="blog-posts">
+                        <article class="blog-card featured" data-category="sustainability">
+                            <div class="blog-image">
+                                <img src="trash-to-treasure.jpg" alt="Trash to Treasure Project">
+                                <span class="featured-badge">Featured</span>
+                            </div>
+                            <div class="blog-card-content">
+                                <div class="blog-meta">
+                                    <span class="blog-category">Sustainability</span>
+                                    <span class="blog-date">March 15, 2024</span>
+                                </div>
+                                <h3>From Trash to Treasure: Revolutionizing Glass Bottle Recycling in Africa</h3>
+                                <p>Discover how our innovative recycling initiative is transforming waste glass bottles into valuable products while creating sustainable employment opportunities.</p>
+                                <div class="blog-footer">
+                                    <a href="/blog/trash-to-treasure" class="btn-secondary">Read More</a>
+                                    <div class="blog-author">
+                                        <img src="author1.jpg" alt="Author">
+                                        <span>By John Doe</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- More blog posts will be dynamically loaded here -->
+                    </div>
+
+                    <div class="blog-sidebar">
+                        <div class="sidebar-section">
+                            <h3>Recent Posts</h3>
+                            <ul class="recent-posts">
+                                <!-- Will be populated dynamically -->
+                            </ul>
+                        </div>
+                        <div class="sidebar-section">
+                            <h3>Subscribe to Our Newsletter</h3>
+                            <form id="blog-subscribe-form" class="subscribe-form">
+                                <input type="email" placeholder="Enter your email" required>
+                                <button type="submit" class="btn-primary">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Same footer as other pages -->
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="components.js"></script>
+    <script src="blog.js"></script>
+</body>
+</html> 

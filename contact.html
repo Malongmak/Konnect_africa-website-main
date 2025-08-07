@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Konnect Africa</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* Contact Page Specific Styles */
+    .contact-hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 80px;
+    }
+
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .contact-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .contact-hero h1 {
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .contact-hero p {
+      font-size: clamp(1.125rem, 3vw, 1.25rem);
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+
+    .contact-content {
+      padding: 80px 0;
+      background: var(--bg-primary);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      background: var(--bg-secondary);
+      padding: 2.5rem;
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--border-color);
+    }
+
+    .contact-info h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: var(--bg-primary);
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+    }
+
+    .contact-item:hover {
+      transform: translateX(8px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .contact-icon {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      min-width: 40px;
+    }
+
+    .contact-details h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+      color: var(--text-primary);
+    }
+
+    .contact-details p {
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .contact-form {
+      background: var(--bg-secondary);
+      padding: 2.5rem;
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--border-color);
+    }
+
+    .contact-form h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--border-color);
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      transition: var(--transition);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    @media (max-width: 768px) {
+      .contact-hero {
+        padding: 100px 0 60px;
+      }
+
+      .contact-hero-content {
+        padding: 0 16px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .contact-info,
+      .contact-form {
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-hero h1 {
+        font-size: 2rem;
+      }
+
+      .contact-hero p {
+        font-size: 1rem;
+      }
+
+      .contact-info,
+      .contact-form {
+        padding: 1.5rem;
+      }
+
+      .contact-info h2,
+      .contact-form h2 {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="Konnect-Africa logo" />
+        Konnect Africa
+      </a>
+      <nav class="navbar">
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="About.html">About</a></li>
+          <li class="nav-item"><a href="services.html">Services</a></li>
+          <li class="nav-item"><a href="Why.html">Why Us</a></li>
+          <li class="nav-item"><a href="team.html">Team</a></li>
+          <li class="nav-item"><a href="contact.html" class="active">Contact</a></li>
+          <li class="nav-item"><a href="chat.html">Maker AI</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="contact-hero">
+      <div class="contact-hero-content">
+        <h1>Get In Touch</h1>
+        <p>Ready to start your journey with us? Contact our team to discuss how we can help transform your community.</p>
+      </div>
+    </section>
+
+    <section class="contact-content">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h2>Contact Information</h2>
+            <div class="contact-item">
+              <div class="contact-icon">📧</div>
+              <div class="contact-details">
+                <h3>Email</h3>
+                <p>konnectafricanconsult24@gmail.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div class="contact-details">
+                <h3>Phone</h3>
+                <p>+211925956205</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">🌍</div>
+              <div class="contact-details">
+                <h3>Location</h3>
+                <p>South Sudan, serving clients across Africa</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">⏰</div>
+              <div class="contact-details">
+                <h3>Business Hours</h3>
+                <p>Monday - Friday: 9:00 AM - 6:00 PM (GMT+3)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form id="contact-form">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject *</label>
+                <input type="text" id="subject" name="subject" required>
+              </div>
+              <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Konnect Africa</h3>
+        <p>Empowering communities through innovative solutions and sustainable development across Africa and the world.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="About.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="services.html">Research & Assessment</a></li>
+          <li><a href="services.html">Capacity Building</a></li>
+          <li><a href="services.html">Governance & Policy</a></li>
+          <li><a href="chat.html">Live Chat</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <ul>
+          <li>Email: konnectafricanconsult24@gmail.com</li>
+          <li>Phone: +211 925 956 205</li>
+          <li>Location: South Sudan</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-media-links">
+          <a href="http://linkedin.com/Konnectafrica" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="http://facebook.com/Konnectafrica" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://x.com/konnect_af60815" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/Konnectafrica" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2024 Konnect Africa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Floating AI Chat Widget -->
+  <div class="ai-chat-widget">
+    <button class="ai-chat-toggle" id="ai-chat-toggle">🤖</button>
+    <div class="ai-chat-container" id="ai-chat-container">
+      <div class="ai-chat-header">
+        <h3>🤖 Maker AI</h3>
+        <p>Your intelligent assistant</p>
+        <button class="ai-chat-close" id="ai-chat-close">×</button>
+      </div>
+      
+      <div class="ai-chat-messages" id="ai-chat-messages">
+        <div class="ai-chat-message ai">
+          <div class="ai-chat-avatar">AI</div>
+          <div class="ai-chat-content">
+            Hello! I'm Maker AI, your intelligent assistant. How can I help you today? I can assist with questions about Konnect Africa, provide information about our services, or help with any other inquiries you might have.
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-chat-typing" id="ai-chat-typing">
+        <div class="ai-chat-avatar">AI</div>
+        <div class="ai-chat-typing-dots">
+          <div class="ai-chat-typing-dot"></div>
+          <div class="ai-chat-typing-dot"></div>
+          <div class="ai-chat-typing-dot"></div>
+        </div>
+      </div>
+
+      <div class="ai-chat-input-container">
+        <form class="ai-chat-input-form" id="ai-chat-form">
+          <textarea 
+            class="ai-chat-input" 
+            id="ai-chat-input" 
+            placeholder="Type your message here..."
+            rows="1"
+            maxlength="300"
+          ></textarea>
+          <button type="submit" class="ai-chat-send" id="ai-chat-send">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22,2 15,22 11,13 2,9"></polygon>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    class FloatingMakerAI {
+      constructor() {
+        this.messages = [];
+        this.isTyping = false;
+        this.isOpen = false;
+        this.initializeChat();
+      }
+
+      initializeChat() {
+        this.chatToggle = document.getElementById('ai-chat-toggle');
+        this.chatContainer = document.getElementById('ai-chat-container');
+        this.chatClose = document.getElementById('ai-chat-close');
+        this.chatForm = document.getElementById('ai-chat-form');
+        this.chatInput = document.getElementById('ai-chat-input');
+        this.chatMessages = document.getElementById('ai-chat-messages');
+        this.chatSend = document.getElementById('ai-chat-send');
+        this.chatTyping = document.getElementById('ai-chat-typing');
+
+        this.setupEventListeners();
+        this.adjustTextareaHeight();
+      }
+
+      setupEventListeners() {
+        this.chatToggle.addEventListener('click', () => {
+          this.toggleChat();
+        });
+
+        this.chatClose.addEventListener('click', () => {
+          this.closeChat();
+        });
+
+        this.chatForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          this.sendMessage();
+        });
+
+        this.chatInput.addEventListener('input', () => {
+          this.adjustTextareaHeight();
+        });
+
+        this.chatInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            this.sendMessage();
+          }
+        });
+      }
+
+      toggleChat() {
+        this.isOpen = !this.isOpen;
+        this.chatContainer.classList.toggle('active', this.isOpen);
+        this.chatToggle.classList.toggle('active', this.isOpen);
+        
+        if (this.isOpen) {
+          this.chatInput.focus();
+          this.scrollToBottom();
+        }
+      }
+
+      closeChat() {
+        this.isOpen = false;
+        this.chatContainer.classList.remove('active');
+        this.chatToggle.classList.remove('active');
+      }
+
+      adjustTextareaHeight() {
+        this.chatInput.style.height = 'auto';
+        this.chatInput.style.height = Math.min(this.chatInput.scrollHeight, 80) + 'px';
+      }
+
+      async sendMessage() {
+        const message = this.chatInput.value.trim();
+        if (!message || this.isTyping) return;
+
+        // Add user message
+        this.addMessage(message, 'user');
+        this.chatInput.value = '';
+        this.adjustTextareaHeight();
+
+        // Show typing indicator
+        this.showTypingIndicator();
+
+        // Simulate AI response
+        setTimeout(() => {
+          this.hideTypingIndicator();
+          const aiResponse = this.generateAIResponse(message);
+          this.addMessage(aiResponse, 'ai');
+        }, 1000 + Math.random() * 2000);
+      }
+
+      addMessage(content, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `ai-chat-message ${sender}`;
+        
+        const avatar = document.createElement('div');
+        avatar.className = 'ai-chat-avatar';
+        avatar.textContent = sender === 'user' ? 'U' : 'AI';
+
+        const messageContent = document.createElement('div');
+        messageContent.className = 'ai-chat-content';
+        messageContent.textContent = content;
+
+        messageDiv.appendChild(avatar);
+        messageDiv.appendChild(messageContent);
+        
+        this.chatMessages.appendChild(messageDiv);
+        this.scrollToBottom();
+
+        // Store message
+        this.messages.push({ content, sender, timestamp: new Date() });
+      }
+
+      showTypingIndicator() {
+        this.isTyping = true;
+        this.chatTyping.classList.add('active');
+        this.chatSend.disabled = true;
+        this.scrollToBottom();
+      }
+
+      hideTypingIndicator() {
+        this.isTyping = false;
+        this.chatTyping.classList.remove('active');
+        this.chatSend.disabled = false;
+      }
+
+      scrollToBottom() {
+        this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+      }
+
+      generateAIResponse(userMessage) {
+        const responses = {
+          greetings: [
+            "Hello! I'm Maker AI, your intelligent assistant for Konnect Africa. How can I help you today?",
+            "Hi there! Welcome to Konnect Africa. I'm here to answer any questions you have about our services, team, or company.",
+            "Greetings! I'm your AI assistant. Feel free to ask me anything about Konnect Africa - our services, team, mission, or how we can help you."
+          ],
+          konnect: [
+            "Konnect Africa is a distinguished consulting firm specializing in connecting Africa with the global community through exceptional consultancy services. We focus on governance, innovation, and sustainable development across the continent.",
+            "We are a leading consulting firm that bridges Africa with the global community. Our expertise spans governance, innovation, and sustainable development, helping organizations and communities thrive.",
+            "Konnect Africa empowers communities and strengthens workplace relationships across Africa. We provide expert consultancy in governance, innovation, and sustainable development to drive positive change."
+          ],
+          services: [
+            "We offer comprehensive services in three key areas: 1) Governance & Leadership - project coordination, capacity building, organizational development; 2) Innovation & Technology - digital solutions, tech integration; 3) Sustainable Development - rural governance, peace promotion, community empowerment.",
+            "Our consulting services include governance and conflict management, innovation and technology solutions, sustainable development projects, capacity building, organizational development, and peace promotion initiatives across Africa.",
+            "We specialize in rural governance, peace promotion, capacity building, and organizational development. Our services help communities and organizations achieve sustainable growth and positive impact."
+          ],
+          contact: [
+                      "You can reach us at konnectafricanconsult24@gmail.com or call +211925956205. We're located in South Sudan and serve clients across Africa. Feel free to contact us for any inquiries about our services.",
+          "Contact us via email at konnectafricanconsult24@gmail.com or phone +211925956205. We're based in South Sudan and work with clients throughout Africa.",
+          "Get in touch with us at konnectafricanconsult24@gmail.com or +211925956205. We're here to help with any questions about our services or how we can assist your organization."
+          ],
+          team: [
+            "Our diverse team includes: James Kai (CEO) - Governance and Conflict Management Specialist; Meijberg Arnoud (Co-founder) - 20+ years in African development; Joshua Malong (DOP) - Software engineering and youth advocacy; Abraham Duol Maker (BDM) - Impact-driven solutions; Nyirou Athian Katrina - Business Administration and social justice.",
+            "We have experts in governance, conflict management, technology, sustainable development, and business administration. Our team brings together decades of experience working across Africa in various sectors.",
+            "Our team combines expertise in governance, technology, sustainable development, and business administration. Each member brings unique skills and experience working across African communities."
+          ],
+          mission: [
+            "Our mission is to empower communities and strengthen workplace relationships across Africa through innovative consulting services that drive sustainable development and positive change.",
+            "We're committed to connecting Africa with the global community through exceptional consultancy services that promote governance, innovation, and sustainable development.",
+            "Our mission is to bridge gaps and create opportunities across Africa through expert consulting services that foster growth, innovation, and community empowerment."
+          ],
+          vision: [
+            "We envision a connected Africa where communities thrive through innovative solutions, strong governance, and sustainable development practices.",
+            "Our vision is to be the leading consulting firm that empowers African communities through technology, governance, and sustainable development initiatives.",
+            "We strive to create lasting impact across Africa by connecting communities with innovative solutions and sustainable development practices."
+          ],
+          location: [
+            "We're based in South Sudan and serve clients across Africa. Our team works remotely and on-site to provide comprehensive consulting services throughout the continent.",
+            "Headquartered in South Sudan, we operate across Africa, bringing our expertise in governance, innovation, and sustainable development to communities and organizations throughout the continent.",
+            "Based in South Sudan, we extend our services across Africa, working with clients and communities throughout the continent to deliver impactful consulting solutions."
+          ],
+          expertise: [
+            "Our expertise includes governance and conflict management, innovation and technology, sustainable development, capacity building, organizational development, peace promotion, and rural governance.",
+            "We specialize in governance, innovation, sustainable development, capacity building, and organizational development. Our team has extensive experience in African development projects.",
+            "Our core expertise spans governance, technology innovation, sustainable development, capacity building, and organizational development across African communities and organizations."
+          ],
+          projects: [
+            "We've worked on various projects including rural governance initiatives, peace promotion programs, capacity building workshops, organizational development, and technology integration for African communities.",
+            "Our project portfolio includes governance strengthening, peace promotion, capacity building, organizational development, and sustainable development initiatives across Africa.",
+            "We've successfully delivered projects in rural governance, peace promotion, capacity building, organizational development, and sustainable development across African communities."
+          ],
+          technology: [
+            "We integrate technology and innovation into our consulting services, helping organizations leverage digital solutions for governance, development, and community empowerment.",
+            "Our technology services include digital transformation, innovation consulting, and tech integration to help African organizations and communities thrive in the digital age.",
+            "We help organizations embrace technology and innovation for better governance, development, and community engagement across Africa."
+          ],
+          development: [
+            "We focus on sustainable development that empowers communities, strengthens governance, and creates lasting positive impact across Africa.",
+            "Our development approach combines governance, innovation, and sustainability to create meaningful change in African communities and organizations.",
+            "We promote sustainable development through governance strengthening, innovation, and capacity building across African communities."
+          ],
+          governance: [
+            "We specialize in governance and conflict management, helping organizations and communities build strong, effective governance structures.",
+            "Our governance services include capacity building, organizational development, and conflict management to strengthen institutions across Africa.",
+            "We help organizations improve governance through capacity building, organizational development, and conflict management strategies."
+          ],
+          innovation: [
+            "We drive innovation across Africa by helping organizations and communities adopt new technologies and creative solutions for development challenges.",
+            "Our innovation services help organizations embrace new technologies and creative approaches to solve development challenges across Africa.",
+            "We promote innovation by helping African organizations and communities adopt new technologies and creative solutions for sustainable development."
+          ],
+          sustainability: [
+            "We promote sustainable development practices that create lasting positive impact on African communities and organizations.",
+            "Our sustainability focus ensures that our consulting services create long-term benefits for African communities and organizations.",
+            "We help organizations implement sustainable development practices that create lasting positive impact across Africa."
+          ],
+          partnership: [
+            "We partner with organizations, communities, and institutions across Africa to deliver impactful consulting services and create positive change.",
+            "We collaborate with various stakeholders across Africa to provide comprehensive consulting services and drive sustainable development.",
+            "We work in partnership with African organizations and communities to deliver effective consulting services and create lasting impact."
+          ],
+          impact: [
+            "Our work creates positive impact across Africa through improved governance, sustainable development, and community empowerment.",
+            "We measure our success by the positive impact we create in African communities through better governance, innovation, and sustainable development.",
+            "Our consulting services create meaningful impact by strengthening governance, promoting innovation, and supporting sustainable development across Africa."
+          ],
+          future: [
+            "We're committed to expanding our reach across Africa, leveraging technology and innovation to create even greater impact in communities and organizations.",
+            "Our future plans include expanding our services across Africa, embracing new technologies, and creating more opportunities for sustainable development.",
+            "We're focused on growing our impact across Africa through innovative solutions, technology integration, and sustainable development initiatives."
+          ],
+          agribusiness: [
+            "We specialize in agricultural development, food security, and sustainable farming practices to boost Africa's agricultural sector and rural economies. Our agribusiness services include agricultural modernization, food security programs, sustainable farming techniques, value chain development, and climate-smart agriculture.",
+            "Our agribusiness expertise covers agricultural development, food security, sustainable farming practices, rural economy strengthening, agricultural technology innovation, market access, and trade facilitation across Africa.",
+            "We help boost Africa's agricultural sector through sustainable farming practices, food security programs, agricultural value chain development, and rural economy strengthening."
+          ],
+          default: [
+            "That's an interesting question! I'd be happy to help you with information about Konnect Africa, our services, team, or how we can assist your organization.",
+            "Great question! I can help you learn more about our services, team, mission, or how Konnect Africa can support your needs.",
+            "I'm here to help! Let me know what specific information you're looking for about Konnect Africa, our services, or how we can assist you.",
+            "That's a good question! I can provide information about our consulting services, team expertise, or how we can help your organization or community."
+          ]
+        };
+
+        const message = userMessage.toLowerCase();
+        
+        // Enhanced keyword matching for comprehensive responses
+        if (message.includes('hello') || message.includes('hi') || message.includes('hey') || message.includes('greetings')) {
+          return this.getRandomResponse(responses.greetings);
+        } else if (message.includes('konnect') || message.includes('company') || message.includes('about') || message.includes('what is') || message.includes('who are you')) {
+          return this.getRandomResponse(responses.konnect);
+        } else if (message.includes('service') || message.includes('what do you do') || message.includes('help') || message.includes('offer') || message.includes('provide')) {
+          return this.getRandomResponse(responses.services);
+        } else if (message.includes('contact') || message.includes('email') || message.includes('phone') || message.includes('reach') || message.includes('get in touch')) {
+          return this.getRandomResponse(responses.contact);
+        } else if (message.includes('team') || message.includes('who') || message.includes('people') || message.includes('staff') || message.includes('members')) {
+          return this.getRandomResponse(responses.team);
+        } else if (message.includes('mission') || message.includes('purpose') || message.includes('goal')) {
+          return this.getRandomResponse(responses.mission);
+        } else if (message.includes('vision') || message.includes('future') || message.includes('aspire')) {
+          return this.getRandomResponse(responses.vision);
+        } else if (message.includes('location') || message.includes('where') || message.includes('based') || message.includes('address')) {
+          return this.getRandomResponse(responses.location);
+        } else if (message.includes('expertise') || message.includes('specialize') || message.includes('skills') || message.includes('capabilities')) {
+          return this.getRandomResponse(responses.expertise);
+        } else if (message.includes('project') || message.includes('work') || message.includes('experience') || message.includes('portfolio')) {
+          return this.getRandomResponse(responses.projects);
+        } else if (message.includes('technology') || message.includes('tech') || message.includes('digital') || message.includes('innovation')) {
+          return this.getRandomResponse(responses.technology);
+        } else if (message.includes('development') || message.includes('sustainable') || message.includes('growth')) {
+          return this.getRandomResponse(responses.development);
+        } else if (message.includes('governance') || message.includes('management') || message.includes('leadership')) {
+          return this.getRandomResponse(responses.governance);
+        } else if (message.includes('innovation') || message.includes('creative') || message.includes('new')) {
+          return this.getRandomResponse(responses.innovation);
+        } else if (message.includes('sustainability') || message.includes('sustainable') || message.includes('lasting')) {
+          return this.getRandomResponse(responses.sustainability);
+        } else if (message.includes('partner') || message.includes('collaborate') || message.includes('work with')) {
+          return this.getRandomResponse(responses.partnership);
+        } else if (message.includes('impact') || message.includes('effect') || message.includes('change') || message.includes('difference')) {
+          return this.getRandomResponse(responses.impact);
+        } else if (message.includes('future') || message.includes('plan') || message.includes('next') || message.includes('ahead')) {
+          return this.getRandomResponse(responses.future);
+        } else if (message.includes('agribusiness') || message.includes('agriculture') || message.includes('farming') || message.includes('food security')) {
+          return this.getRandomResponse(responses.agribusiness);
+        } else {
+          return this.getRandomResponse(responses.default);
+        }
+      }
+
+      getRandomResponse(responses) {
+        return responses[Math.floor(Math.random() * responses.length)];
+      }
+    }
+
+    // Initialize Floating Maker AI when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      new FloatingMakerAI();
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
